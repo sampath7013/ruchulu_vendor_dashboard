@@ -58,6 +58,15 @@ const handleImageUpload=(e)=>{
         alert("Firm added successfully");
         setFirmName('');setArea('');setOffer('');setfile(null);setCategory([]);setRegion([]);
       }
+      else if(data.message==="vendor can only have one firm"){
+        alert("Firm Exists. Only one firm allowed");
+      }
+      else{
+        alert("Firm add failed");
+      }
+      console.log(data.firmId);
+      const mango=data.firmId;
+      localStorage.setItem('firmId',mango);
     } catch (error) {
       console.error("firm add failed",error);
       alert("Firm add failed");

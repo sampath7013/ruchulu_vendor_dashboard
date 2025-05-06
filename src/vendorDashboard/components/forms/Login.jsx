@@ -19,6 +19,19 @@ const Login = ({showWelcomeHandler}) => {
         localStorage.setItem('vendorToken',data.token);
         showWelcomeHandler();
       }
+      const vendorId=data.vendorId;
+      console.log("checking vendorId",vendorId);
+      const vendorResponse=await fetch(`${API_URL}vendor/single-vendor/${data.vendorId}`);
+      const vendorData=await vendorResponse.json();
+      if(vendorResponse.ok){
+        const vendorFirmId=vendorData.vendorFirmId;
+        const vendorFirmName=vendorData.vendor.firm[0].firmName;
+        console.log("checking vendorFirmName",vendorFirmName);
+        console.log("checking vendorFirmId",vendorFirmId);
+        localStorage.setItem('firmId',vendorFirmId);
+        localStorage.setItem('firmName',vendorFirmName);
+        window.location.reload();
+      }
     } catch (error) {
       console.error("login failed",error);
       alert("Login failed");
