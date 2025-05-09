@@ -42,7 +42,7 @@ const LandingPage = () => {
     localStorage.removeItem('firmName');
     setShowLogout(false);
     setShowFirmTitle(true);
-    setShowWelcome(true);
+    setShowWelcome(false);
   }
 
   const showAddProductHandler=()=>{
@@ -56,18 +56,18 @@ const LandingPage = () => {
     }
     else{
       alert("please Login First")
-      setShowLogin(true)
+      setShowLogin(true);
     }
 
   }
   const showWelcomeHandler=()=>{
-    
-    setShowAddProduct(false);
-    setShowWelcome(true);
+      setShowWelcome(false);
     setShowLogin(false);
     setShowRegister(false);
     setShowAddFirm(false);
+    setShowAddProduct(false);
     setShowAllProducts(false);
+    
 
   }
 
