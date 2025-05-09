@@ -22,13 +22,16 @@ const LandingPage = () => {
     const loginToken = localStorage.getItem('vendorToken');
     if (loginToken) {
       setShowLogout(true);
+      setShowWelcome(true);
     }
   }, [])
 
   useEffect(() => {
     const firmName = localStorage.getItem('firmName');
-    if (firmName) {
+    const firmId = localStorage.getItem('firmId');
+    if (firmName || firmId) {
       setShowFirmTitle(false);
+      setShowWelcome(true);
     }
   }, [])
 
@@ -38,6 +41,8 @@ const LandingPage = () => {
     localStorage.removeItem('firmId');
     localStorage.removeItem('firmName');
     setShowLogout(false);
+    setShowFirmTitle(true);
+    setShowWelcome(true);
   }
 
   const showAddProductHandler=()=>{
@@ -75,7 +80,7 @@ const LandingPage = () => {
     setShowWelcome(false);
     setShowAllProducts(false);
     }else{
-      alert("Please logout first");
+      alert("Please Login first");
       setShowLogin(true);
     }
     
